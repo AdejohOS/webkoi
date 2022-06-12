@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load social_share %}
+
+
+{% block content %}
+
+<section class="hero give">
+    <img src="{% static '/img/contact.jpeg' %}" alt="" class="hero-img">
+    <div class="overlay"></div>
+
+    <div class="give-text">
+        <h2>Download Messages</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio, veniam!</p>
+    </div>
+</section>
+
+
+
+<section class="my-sermon-page">
+    <div class="my-sermon-container">
+        <div class="my-sermon-page-back">
+            <p class="my-sermon-page-top"><a href="{% url 'messages' %}"> &#8592 Back To Messages </a><p>
+        </div>
+
+        <div class="my-sermon-content">
+            <div class="my-sermon-page-text">
+                
+                <h3>{{ message_obj.title }}</h3>
+                <p class="messageobj-date">{{message_obj.date_created | date:"F d Y"}} |  {{message_obj.minister}} </p>
+                <p>{{ message_obj.location }}<a href=""> (map)</a></p>
+                <div class="message-share">
+                <div class="message-download">
+                <p><a href="{{ message_obj.message_audio.url }}">Listen <i class='bx bx-headphone' ></i></a></p>
+                <p><a href="{{ message_obj.message_audio.url }}" download>Download <i class='bx bxs-download' ></i></a></p>
+            </div>
+
+                <h4>Share this Message</h4>
+                <div class="share-holder">
+
+                    <span>
+                        {% post_to_facebook object_or_url '<i class="bx bxl-facebook"></i>' %}
+                    </span>
+                    <span>
+                        {% post_to_twitter "Koinonia Message: {{object.title}}. Check it out!" object_or_url '<i class="bx bxl-twitter"></i>' %}
+                    </span>
+                    <span>
+                        {% send_email object.title "Koinonia Message: {{object.title}}. Check it out!" object_or_url '<i class="bx bx-mail-send"> </i>' %}
+                    </span>
+                    <span>
+                        {% post_to_whatsapp object_or_url '<i class="bx bxl-whatsapp"></i>' %}
+                    </span>
+                    <span>
+                        {% post_to_telegram "Koinonia Message: {{object.title}}" object_or_url '<i class="bx bxl-telegram"></i>' %}
+                    </span>
+    
+  
+                </div>
+
+            </div>
+            </div>
+
+            <div class="my-sermon-page-img">
+                <img src="{{message_obj.message_image.url}}" alt="">
+                
+                
+                <p>{{ message.description|safe }}</p>
+            </div>
+            
+            
+        </div>
+
+    </div>
+    
+</section>
+{% endblock%}

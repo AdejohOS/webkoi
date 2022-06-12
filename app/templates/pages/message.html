@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+<section class="hero give">
+    <img src="{% static '/img/contact.jpeg' %}" alt="" class="hero-img">
+    <div class="overlay"></div>
+
+    <div class="give-text">
+        <h2>Download Messages</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio, veniam!</p>
+    </div>
+</section>
+
+<section class="search">
+    
+    <div class="search-form">
+        
+        <div class="search-container">
+            <p class="search-direction">
+                <span>*</span>Search Sermons either by Title, Category, Minister or Date
+            </p>
+            <form id="searchForm" class="my-search-form" action="{% url 'messages' %}" method="get">
+
+                
+                    <i class='bx bx-search'></i>
+                    <input class="input input--text" id="formInput#search" type="text" name="search_query"
+                        value="{{search_query}}" placeholder="Enter Search Query" />
+                    <button type="submit">Search</button> 
+            
+            </form>
+        </div>    
+    </div>
+
+    
+   
+</section>
+
+<section class="message">
+
+    <div class="message-container">
+
+        
+
+
+        <div class="message-wrapper">
+
+        
+
+        {% for message in messages %}
+        <div class="message-content">
+            <div class="message-col-1">
+                <img src="{{message.message_image.url}}" alt="">
+            </div>
+
+            <div class="message-col-2">
+                <div class="message-text">
+                    <p class="message-date">{{message.message_date | date:"F d Y"}} |  {{message.minister}} </p>
+                    <hr>
+                    <h4 class="message-title"><a href="{% url 'message_details' message.slug %}"> {{ message.title }}</a></h4>
+                    <p class="message-location">{{message.location}}</p>
+                    <p class="share" ><a href="{% url 'message_details' message.slug %}"> Share  <i class='bx bxs-share-alt'></i></a></p>
+                    
+                    <div class="message-category">
+                        {% for category in message.category.all %}
+                        <p class="page-btn category">{{category}}</p>
+                        {% endfor %}
+                    </div>
+                
+                </div>
+
+                <div class="download">
+                    <div class="dl"><a href="{{message.message_audio.url}}" class="dld"> Listen  <i class='bx bx-headphone'></i></a></div>
+                    <div class="dl"><a href="{{message.message_audio.url}}" class="dld" download> Download  <i class='bx bxs-download'></i></a></div>
+                </div>
+            </div>
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+   {% include 'pagination.html' with queryset=messages%}
+
+    
+
+    </div>
+
+</section>
+
+{% endblock %}

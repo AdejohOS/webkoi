@@ -1,0 +1,203 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    {% if message.slug in request.path %}
+    <title>{{message.title}}</title>
+    <meta property="og:title" content="{{message.title}}">
+    <meta name="description" property="og:description" content="{{message.description|striptags|truncatewords:20}}">
+    <meta property="og:image:secure_url" content="{{message_image.url}}">
+    <meta property="og:image:alt" content="{{object.image_alt}}">
+    <meta property="og:url" content="https://www.website.com/{{message.slug}}">
+    <meta name="twitter:card" value="summary">
+
+    {% elif request.path == '/' %}
+    
+    <title>Homepage | Koinonia Network International </title>
+    <meta name="description" content="This is the description of the homepage">
+
+    {% elif request.path == '/sermons/' %}
+    <title>Koinonia | Listen Share and Download Koinonia Sermons </title>
+    <meta name="description" content="This is a collection of koinonia messages">
+
+    {% elif request.path == '/blog/' %}
+    <title>Koinonia | Read and Enjoy Soul Uplifting Articles </title>
+    <meta name="description" content="This is a collection of koinonia messages">
+
+    {% elif request.path == '/testimonies/' %}
+    <title>Koinonia | Testimonies of God's Faithfulness </title>
+    <meta name="description" content="This is a collection of koinonia messages">
+
+    {% elif request.path == '/about/' %}
+    <title>Koinonia | About The Koinonia Network International </title>
+    <meta name="description" content="This is a collection of koinonia messages">
+
+    {% elif request.path == '/contact/' %}
+    <title>Koinonia | Talk to Us </title>
+    <meta name="description" content="This is a collection of koinonia messages">
+
+    {% elif request.path == '/radio/' %}
+    <title>Koinonia | Listen to Koinonia Sermons Live </title>
+    <meta name="description" content="This is a collection of koinonia messages">
+
+    {% elif request.path == '/give/' %}
+    <title>Koinonia | Give to the Propagation of the Gospel </title>
+    <meta name="description" content="This is a collection of koinonia messages">
+
+    {% else %}
+    <title>Koinonia Network International </title>
+    <meta name="description" content="Another part of the Koinonia Document">
+
+    {% endif %}
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static '/img/favicon/apple-touch-icon.png' %}">
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static '/img/favicon/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static '/img/favicon/favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static '/img/favicon/site.webmanifest' %}">
+
+    <link rel="stylesheet" href="{% static '/css/base.css' %}">
+    <link rel="stylesheet" href="{% static '/css/style.css' %}">
+    
+
+
+    <!--Swiper css-->
+    
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
+    <!--End Swiper css-->
+
+    
+
+    
+    
+    
+
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+
+    <!--<link rel="stylesheet" href="https://unpkg.com/rolly.js@0.2.1/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">-->
+</head>
+
+
+<body>
+    <main class="app">
+        <header class="header" data-scene>
+            <a class="header-logo" href="{% url 'home' %}"><img src="{% static '/img/koilogo.png' %}" alt=""></a>
+
+            <div class="header-toggle">
+                <i class='bx bx-menu' id="header-toggle"></i>
+            </div>
+
+            <nav class="nav" id="nav-menu">
+
+                <div class="nav-content bd-grid">
+                    
+                        <a href="{% url 'home' %}" class="mobile-fill">
+                            <img src="{% static '/img/koilogo.png' %}" class="nav-img" alt="">
+                        </a>
+
+                    
+
+                    <div class="nav-menu">
+                        <ul class="nav-list">
+                            <li class="nav-item"><a href="{% url 'home' %}" class="nav-link {% if request.path == '/' %} active {%endif%}"> Home </a></li>
+                            <li class="nav-item"><a href="{% url 'about' %}" class="nav-link {% if request.path == '/about/' %} active {%endif%}"> About Us </a></li>
+                            
+                            
+                            <!--
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-link">Units <i class='bx bxs-chevron-down dropdown-icon' ></i></a>
+                                
+                                <ul class="dropdown-menu">
+                                    <li class="dropdown-item"><a href="#" class="nav-link">Ushering</a></li>
+                                    
+                                    <li class="dropdown-item"><a href="#" class="nav-link">Technical</a></li>
+                                    <li class="dropdown-item"><a href="#" class="nav-link">Welfare</a></li>
+
+                                </ul>
+                            </li>-->
+
+                            <li class="nav-item"><a href="{% url 'messages' %}" class="nav-link {% if request.path == '/sermons/' %} active {%endif%}"> Sermons</a></li>
+                            <li class="nav-item"><a href="{% url 'testimonies' %}" class="nav-link {% if request.path == '/testimonies/' %} active {%endif%}"> Testimonies</a></li>
+                            <li class="nav-item"><a href="{% url 'blog' %}" class="nav-link {% if request.path == '/blog/' %} active {%endif%}"> Blog</a></li>
+                            <li class="nav-item"><a href="{% url 'contact' %}" class="nav-link {% if request.path == '/contact/' %} active {%endif%}"> Contact </a></li>
+
+                        </ul>
+                    </div>
+
+                    <div class="nav-extra">
+                        <ul class="extra-list">
+                            <li><a href="{% url 'give' %}" class="extra-link primary"> Give <i class='bx bx-heart-circle'></i></a></li>
+                            <li><a href="{% url 'radio' %}" class="extra-link secondary">Radio <i class='bx bx-radio'></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+        </header>
+
+        
+
+        
+
+        
+      
+        
+
+        
+
+       
+
+        
+
+
+        
+
+        
+
+        {% block content %}
+
+
+        {% endblock %}
+
+                
+
+                
+
+  
+                
+          
+
+
+        {% include 'footer.html' %}
+        
+    </main>
+
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!--<script src="https://unpkg.com/rolly.js@0.2.1/dist/rolly.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>-->
+    
+   <!--Swiper Js -->
+    
+   <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+   <!-- End Swiper Js -->
+
+    <script src="{% static '/js/app.js' %}"></script>
+
+    
+   
+    
+   
+    
+</body>
+</html> 

@@ -1,0 +1,62 @@
+{% extends 'sermons/base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+
+<section class="hero give">
+  <img src="/images/koibnb.jpg" alt="" class="hero-img">
+  <div class="overlay"></div>
+
+  <div class="give-text">
+      <h2>Koinonia</h2>
+      <p>It's Intimacy, Partnership and Fellowship!!!</p>
+  </div>
+</section>
+
+<section class="search-result">
+  <div class="search-results-container">
+      
+      <div class="search-title">
+          
+          
+              <h2 >Search Results</h2>
+              <p>for "Apostle Joshua Selman"</p>
+          
+
+      </div>
+
+
+
+      <div class="search-container">
+
+        {% for message in messages %}
+          <div class="search-content">
+              <a href="">
+                  <p class="date"><i class='bx bx-purchase-tag'></i> {{message.description}}</p>
+                  <h4>{{ message.title }}</h4>
+                  <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id pariatur laboriosam quisquam, excepturi vitae sunt.</p>
+                  <p class="date"><i class='bx bx-microphone'></i> <span>Apostle Joshua Selman</span></p>
+              </a>
+          </div>
+
+        {% empty %}
+
+          <h4>No Result(s) Found</h4>
+
+        {% endfor%}
+          
+      </div>
+
+        
+  </div>
+  
+
+     
+</section>
+
+          
+          
+
+{% endblock %}

@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{% load static %}
+<title>Blog</title>
+
+{% block content %}
+
+<section class="hero give">
+    <img src="{% static '/img/koibnb.jpg' %}" alt="" class="hero-img">
+    <div class="overlay"></div>
+
+    <div class="give-text">
+        <h2>Koinonia Blog</h2>
+        <p>It's Intimacy, Partnership and Fellowship!!!</p>
+    </div>
+</section>
+
+<section class="blog">
+    <div class="blog-container">
+        
+        <div class="blog-showcase">
+            
+            <div class="blog-showcase-container">
+                <h2 class="sub-title">Latest Post</h2>
+
+                <div class="showcase-featured">
+                
+                    <div class="showcase-img">
+                        <img class="showcase-img-placer" src="{% static '/img/place.png' %}" alt="">
+                    </div>
+                
+                    <div class="blog-showcase-details">
+                        <p class="date">March 05, 2022 --- <i class='bx bx-purchase-tag'></i> Finance, Marriage</p>
+                        <h3>Mankind and Cultural Relationship</h3>
+                        <p class="showcase-con">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis corporis corrupti deserunt magni ipsam nihil dolor porro qui, nemo dolorum! Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid, suscipit? Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, culpa.</p>
+                        <div class="btn btn-b"><a href="">Read On &#8594</a></div>
+                    </div>
+
+                </div>
+
+            </div>
+            
+
+        </div>
+
+        <div class="koinonia-blog">
+            <div class="blog-showcase-container">
+
+                <h2 class="sub-title">Featured Post</h2>
+                <div class="blog-row">
+                    
+                    <div class="blog-col blog-col1">
+                        <a href="">
+                            <img src="{% static '/img/place.png' %}" alt="">
+                            <p class="date">March 05, 2022</p>
+                            <h3>Mankind and Cultural Relationship</h3>
+                            <p class="date"><i class='bx bx-purchase-tag'></i> Finance, Marriage</p>
+                        </a> 
+                        
+                    </div>
+
+                    <div class="blog-col blog-col2">
+                        <a href="">
+                            <img src="{% static '/img/place.png' %}" alt="">
+                            <p class="date">March 05, 2022</p>
+                            <h3>The Pathway to Success</h3>
+                            <p class="date"><i class='bx bx-purchase-tag'></i> Finance, Marriage</p>
+                        </a>
+                    </div>
+
+                    <div class="blog-col blog-col3">
+                        <a href="">
+                            <img src="{% static '/img/place.png' %}" alt="">
+                            <p class="date">March 05, 2022</p>
+                            <h3>The Evidence of Good Leadership</h3>
+                            <p class="date"><i class='bx bx-purchase-tag'></i> Finance, Marriage</p>
+                        </a>
+                    </div>
+                
+                </div>
+            </div>
+            
+        </div>
+
+        
+
+
+        
+
+    
+
+        
+        </div>
+    
+
+       
+</section>
+
+
+
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+<section class="hero give">
+    <img src="{% static '/img/give.jpeg' %}" alt="" class="hero-img">
+    <div class="overlay"></div>
+
+    <div class="give-text">
+        <h2>Giving</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio, veniam!</p>
+    </div>
+</section>
+
+<section class="why-we-give">
+    <div class="why-we-give-container">
+        <h3>Why We Give</h3>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Atque nemo asperiores totam fuga quae eum ullam unde iusto vero, fugiat quaerat cum exercitationem! Atque soluta velit quidem, et repudiandae illum, nulla facere sint similique veniam earum dignissimos consequuntur. Nulla, id!</p>
+    </div>
+
+    
+    <div class="ways-to-give">
+        
+        <div class="ways-to-give-header">
+            <h3>Ways To Give</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto, aperiam!</p>
+        
+        </div>
+        
+        
+        <div class="ways-to-give-container">
+            
+            <div class="ways-to-give-item">
+                <i class='bx bx-donate-heart'></i>
+                <h4>In Person</h4>
+                <p>Just place your check or cash in the offering boxes during any of our service.</p>
+            </div>
+
+            <div class="ways-to-give-item">
+                <i class='bx bxs-bank'></i>
+                <h4>Bank Transfer/Deposit</h4>
+                <p>Deposits and Transfers can be made into Koinonia Account. <br><span> ACCOUNT NAME: KOINONIA NETWORK INTERNATIONAL <br>BANK NAME: BANK OF BANKS <br>ACCOUNT NAME: 1234567890</span></p>
+            </div>
+
+            <div class="ways-to-give-item">
+                <i class='bx bx-card'></i>
+                <h4>Online</h4>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Recusandae, placeat.</p>
+                <a href="" class="button down">Give Online &#8594</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
